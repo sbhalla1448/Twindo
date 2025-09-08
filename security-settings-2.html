@@ -1,0 +1,99 @@
+<!-- Twindo Admin Security Settings Page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Settings - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Header -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 My Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-5xl mx-auto px-6 py-10 space-y-10">
+
+        <!-- Security Settings Card -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">🔐 Security Settings</h2>
+            <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">Secure</span>
+          </div>
+
+          <div class="space-y-8">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-800">Password Management</h3>
+                <p class="text-sm text-gray-600">Change the admin account password.</p>
+              </div>
+              <button class="text-sm text-indigo-600 hover:underline">Change Password</button>
+            </div>
+
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-800">Two-Factor Authentication (2FA)</h3>
+                <p class="text-sm text-gray-600">Enable or disable 2FA for this admin account.</p>
+              </div>
+              <button class="text-sm bg-indigo-600 text-white px-4 py-1 rounded hover:bg-indigo-700">Enable 2FA</button>
+            </div>
+
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-800">Session Timeout</h3>
+                <p class="text-sm text-gray-600">Automatically log out after 15 minutes of inactivity.</p>
+              </div>
+              <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="form-checkbox text-indigo-600">
+                <span class="ml-2 text-sm text-gray-700">Enabled</span>
+              </label>
+            </div>
+
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-800">Suspicious Login Alerts</h3>
+                <p class="text-sm text-gray-600">Send email alerts for new devices or unusual login attempts.</p>
+              </div>
+              <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="form-checkbox text-indigo-600">
+                <span class="ml-2 text-sm text-gray-700">Enabled</span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="mt-8 text-right">
+            <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 text-sm">💾 Save Security Settings</button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>

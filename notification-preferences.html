@@ -1,0 +1,54 @@
+<!-- Admin Settings: Notification Preferences | Twindo -->
+
+<section class="bg-white rounded-xl shadow p-8 mb-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">🔔 Notification Preferences</h2>
+  <p class="text-sm text-gray-600 mb-6">Choose which admin alerts and updates you’d like to receive. You can change these preferences anytime.</p>
+
+  <form class="space-y-6">
+    <!-- System Alerts -->
+    <div>
+      <h3 class="text-sm font-semibold text-gray-800 mb-2">📣 System Alerts</h3>
+      <label class="flex items-center space-x-3">
+        <input type="checkbox" checked class="form-checkbox h-5 w-5 text-indigo-600">
+        <span class="text-sm text-gray-700">Platform maintenance & downtime updates</span>
+      </label>
+      <label class="flex items-center space-x-3 mt-2">
+        <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600">
+        <span class="text-sm text-gray-700">Critical security notices</span>
+      </label>
+    </div>
+
+    <!-- Account Activity -->
+    <div>
+      <h3 class="text-sm font-semibold text-gray-800 mb-2">📥 Account Activity</h3>
+      <label class="flex items-center space-x-3">
+        <input type="checkbox" checked class="form-checkbox h-5 w-5 text-indigo-600">
+        <span class="text-sm text-gray-700">New user sign-ups</span>
+      </label>
+      <label class="flex items-center space-x-3 mt-2">
+        <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600">
+        <span class="text-sm text-gray-700">Subscription changes</span>
+      </label>
+      <label class="flex items-center space-x-3 mt-2">
+        <input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600">
+        <span class="text-sm text-gray-700">New support messages</span>
+      </label>
+    </div>
+
+    <!-- Frequency Settings -->
+    <div class="pt-4 border-t">
+      <h3 class="text-sm font-semibold text-gray-800 mb-2">⏱️ Notification Frequency</h3>
+      <select class="w-full max-w-xs border border-gray-300 rounded-lg p-2 text-sm">
+        <option>Immediately</option>
+        <option>Hourly Digest</option>
+        <option>Daily Summary</option>
+        <option>Weekly Roundup</option>
+      </select>
+    </div>
+
+    <!-- CTA -->
+    <div class="pt-6 text-right">
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded text-sm shadow font-medium transition duration-150">💾 Save Preferences</button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,133 @@
+<!-- Twindo Admin Compose New Message View (with Recipient Auto-complete + Templates Option + Success Toast) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compose Message - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const recipients = ['John Smith', 'Jane Doe', 'Michael Johnson', 'Emily Davis'];
+
+    function showSuggestions(value) {
+      const list = document.getElementById('recipientSuggestions');
+      list.innerHTML = '';
+      if (value.length === 0) return;
+      const matches = recipients.filter(name => name.toLowerCase().includes(value.toLowerCase()));
+      matches.forEach(match => {
+        const item = document.createElement('div');
+        item.className = 'cursor-pointer px-4 py-2 hover:bg-gray-100';
+        item.innerText = match;
+        item.onclick = () => {
+          document.getElementById('recipientInput').value = match;
+          list.innerHTML = '';
+        };
+        list.appendChild(item);
+      });
+    }
+
+    function insertTemplate(templateText) {
+      document.getElementById('messageTextArea').value = templateText;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('successToast');
+      toast.innerText = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      showToast('✅ Message Sent Successfully!');
+      document.querySelector('form').reset();
+      document.getElementById('recipientSuggestions').innerHTML = '';
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Success Toast -->
+  <div id="successToast" class="hidden fixed top-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 text-sm font-medium">
+    ✅ Message Sent Successfully!
+  </div>
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Manage Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Manage Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Manage Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Manage Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📂 Archived Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Admin Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">📩 Messages & Actions</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-3xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Messages & Actions / Compose</nav>
+          <h2 class="text-3xl font-bold text-gray-800">Compose New Message</h2>
+        </section>
+
+        <!-- Compose Message Form -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <form class="space-y-6" onsubmit="handleSubmit(event)">
+            <div class="relative">
+              <label class="block text-sm font-medium text-gray-700">Recipient</label>
+              <input id="recipientInput" type="text" oninput="showSuggestions(this.value)" placeholder="Enter user name or email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+              <div id="recipientSuggestions" class="absolute bg-white border rounded-md w-full mt-1 shadow-md z-10"></div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Subject</label>
+              <input type="text" placeholder="Enter message subject" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Message</label>
+              <textarea id="messageTextArea" rows="8" placeholder="Write your message here..." class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Quick Templates</label>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <button type="button" onclick="insertTemplate('Thank you for contacting us. We have received your message and will respond shortly.')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm">📋 Thank You</button>
+                <button type="button" onclick="insertTemplate('We have updated your account as requested.')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm">📋 Account Update</button>
+                <button type="button" onclick="insertTemplate('Your subscription has been successfully canceled.')" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm">📋 Cancellation Confirmed</button>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700">📩 Send Message</button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

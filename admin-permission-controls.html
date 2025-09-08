@@ -1,0 +1,96 @@
+<!-- Admin - Permission Controls | Twindo -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permission Controls | Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">🔐 Admin Permission Controls</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <main class="pt-24 max-w-7xl mx-auto px-6 space-y-10">
+
+    <!-- Role Selection Dropdown -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">🎯 Select Role to Configure</h2>
+      <select class="w-full border rounded-lg p-2 text-sm">
+        <option value="admin">Admin</option>
+        <option value="support">Support Agent</option>
+        <option value="viewer">Viewer</option>
+        <option value="billing">Billing Specialist</option>
+        <option value="tech">Technical Admin</option>
+      </select>
+    </section>
+
+    <!-- Permissions Table -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">🧩 Action Permissions</h2>
+      <div class="overflow-auto">
+        <table class="w-full table-auto text-left border border-gray-200">
+          <thead class="bg-gray-100 text-sm text-gray-600">
+            <tr>
+              <th class="px-4 py-2 border">Feature</th>
+              <th class="px-4 py-2 border text-center">View</th>
+              <th class="px-4 py-2 border text-center">Edit</th>
+              <th class="px-4 py-2 border text-center">Delete</th>
+              <th class="px-4 py-2 border text-center">Export</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm text-gray-700">
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border">Users</td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border">Credit Score Data</td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox"></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border">Subscription Plans</td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox"></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border">Messages</td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox"></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border">Settings Access</td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+              <td class="text-center border"><input type="checkbox"></td>
+              <td class="text-center border"><input type="checkbox" checked></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-6 text-right">
+        <button class="bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 text-sm shadow">💾 Save Permissions</button>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

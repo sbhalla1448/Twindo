@@ -1,0 +1,140 @@
+<!-- Twindo Admin Site Settings Page (Enhanced with Logo Upload, Social Links, Backup/Reset Settings) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Settings - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function handleSaveSettings(event) {
+      event.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2500);
+    }
+
+    function handleResetDefaults() {
+      if(confirm('Are you sure you want to reset all settings to default?')) {
+        alert('✅ Settings reset to default!');
+      }
+    }
+
+    function handleBackupSettings() {
+      alert('✅ Settings backed up successfully!');
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen relative">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed top-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+    ✅ Settings saved successfully!
+  </div>
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-4xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Settings / Site Settings</nav>
+          <h2 class="text-3xl font-bold text-gray-800">Site Settings</h2>
+        </section>
+
+        <!-- Site Settings Form -->
+        <section class="bg-white rounded-xl shadow p-8 space-y-8">
+          <form onsubmit="handleSaveSettings(event)" class="space-y-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Company Name</label>
+                <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" value="Twindo">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Support Email</label>
+                <input type="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" value="support@twindo.com">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Upload Company Logo</label>
+              <input type="file" class="mt-1 block w-full text-gray-500">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Primary Brand Colour</label>
+                <input type="color" class="mt-1 block w-32 h-12 border-gray-300 rounded-md shadow-sm">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Secondary Brand Colour</label>
+                <input type="color" class="mt-1 block w-32 h-12 border-gray-300 rounded-md shadow-sm">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Default Currency</label>
+              <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <option selected>GBP (£)</option>
+                <option>USD ($)</option>
+                <option>EUR (€)</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Facebook Page URL</label>
+                <input type="url" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="https://facebook.com/yourpage">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Instagram Page URL</label>
+                <input type="url" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="https://instagram.com/yourprofile">
+              </div>
+            </div>
+
+            <div class="flex justify-end space-x-4">
+              <button type="button" onclick="handleBackupSettings()" class="px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white">Backup Settings</button>
+              <button type="button" onclick="handleResetDefaults()" class="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white">Reset to Defaults</button>
+              <button type="submit" class="px-6 py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white">Save Settings</button>
+            </div>
+
+          </form>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

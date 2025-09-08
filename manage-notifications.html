@@ -1,0 +1,70 @@
+<!-- Twindo Admin Notification Preferences -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Preferences - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">🔔 Notification Preferences</h1>
+
+    <div class="bg-white shadow rounded-xl p-6 space-y-6">
+
+      <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">📩 Email Notifications</h2>
+        <label class="flex items-center space-x-3 mb-2">
+          <input type="checkbox" checked class="form-checkbox text-indigo-600">
+          <span class="text-sm text-gray-700">Weekly summary of user activity</span>
+        </label>
+        <label class="flex items-center space-x-3 mb-2">
+          <input type="checkbox" class="form-checkbox text-indigo-600">
+          <span class="text-sm text-gray-700">Notify me of account changes</span>
+        </label>
+        <label class="flex items-center space-x-3">
+          <input type="checkbox" class="form-checkbox text-indigo-600">
+          <span class="text-sm text-gray-700">Email when a new user registers</span>
+        </label>
+      </div>
+
+      <div class="border-t pt-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">📱 SMS Notifications</h2>
+        <label class="flex items-center space-x-3 mb-2">
+          <input type="checkbox" class="form-checkbox text-indigo-600">
+          <span class="text-sm text-gray-700">Login alerts via SMS</span>
+        </label>
+        <label class="flex items-center space-x-3">
+          <input type="checkbox" class="form-checkbox text-indigo-600">
+          <span class="text-sm text-gray-700">Critical system alerts via SMS</span>
+        </label>
+      </div>
+
+      <div class="border-t pt-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">⚙️ Preferences</h2>
+        <label class="flex items-center space-x-3 mb-2">
+          <input type="radio" name="frequency" class="form-radio text-indigo-600" checked>
+          <span class="text-sm text-gray-700">Send instantly</span>
+        </label>
+        <label class="flex items-center space-x-3 mb-2">
+          <input type="radio" name="frequency" class="form-radio text-indigo-600">
+          <span class="text-sm text-gray-700">Daily digest</span>
+        </label>
+        <label class="flex items-center space-x-3">
+          <input type="radio" name="frequency" class="form-radio text-indigo-600">
+          <span class="text-sm text-gray-700">Weekly digest</span>
+        </label>
+      </div>
+
+      <div class="text-right pt-6">
+        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded shadow">💾 Save Preferences</button>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

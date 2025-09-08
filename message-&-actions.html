@@ -1,0 +1,149 @@
+<!-- Twindo Admin Messages & Actions Page (Updated UI & Functionality) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages & Actions - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function confirmBulkAction(action) {
+      return confirm(`Are you sure you want to ${action} the selected messages?`);
+    }
+
+    function toggleSelectAll(source) {
+      const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+      checkboxes.forEach(checkbox => checkbox.checked = source.checked);
+      updateSelectedCount();
+    }
+
+    function updateSelectedCount() {
+      const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]:checked');
+      const badge = document.getElementById('selectedCountBadge');
+      badge.innerText = `${checkboxes.length} Selected`;
+    }
+
+    function filterMessages() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const subject = row.querySelectorAll('td')[2].innerText.toLowerCase();
+        row.style.display = subject.includes(query) ? '' : 'none';
+      });
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Manage Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Manage Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Manage Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Manage Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📂 Archived Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Admin Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">📩 Messages & Actions</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Messages & Actions</nav>
+          <h2 class="text-3xl font-bold text-gray-800">Messages & Actions</h2>
+        </section>
+
+        <!-- Search, Filters, and Actions -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 space-y-4 md:space-y-0">
+          <div class="flex space-x-4">
+            <input id="searchInput" type="text" onkeyup="filterMessages()" placeholder="Search Messages..." class="border px-4 py-2 rounded-lg w-64">
+            <select class="border px-4 py-2 rounded-lg">
+              <option value="">Filter by Status</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+              <option value="deleted">Deleted</option>
+            </select>
+          </div>
+          <div class="flex flex-wrap gap-2 items-center">
+            <span id="selectedCountBadge" class="text-sm text-gray-600">0 Selected</span>
+            <button onclick="confirmBulkAction('mark done')" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">✔️ Mark Done</button>
+            <button onclick="confirmBulkAction('delete')" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">🗑️ Delete</button>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">➕ Compose</button>
+          </div>
+        </div>
+
+        <!-- Messages List -->
+        <section class="bg-white rounded-xl shadow p-6">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="text-sm text-gray-400">
+                <th class="py-2"><input type="checkbox" onclick="toggleSelectAll(this)"></th>
+                <th class="py-2">From</th>
+                <th class="py-2">Subject</th>
+                <th class="py-2">Received</th>
+                <th class="py-2">Status</th>
+                <th class="py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t hover:bg-gray-50">
+                <td class="py-3"><input type="checkbox" onchange="updateSelectedCount()"></td>
+                <td class="py-3">John Smith</td>
+                <td class="py-3">Request for Account Update</td>
+                <td class="py-3">12 Apr 2025</td>
+                <td class="py-3 text-yellow-500">Pending</td>
+                <td class="py-3 flex space-x-2">
+                  <a href="#" class="text-indigo-600">View</a>
+                  <a href="#" class="text-green-600">Mark Done</a>
+                  <a href="#" class="text-red-500">Delete</a>
+                </td>
+              </tr>
+              <tr class="border-t hover:bg-gray-50">
+                <td class="py-3"><input type="checkbox" onchange="updateSelectedCount()"></td>
+                <td class="py-3">Jane Doe</td>
+                <td class="py-3">Subscription Cancellation</td>
+                <td class="py-3">10 Apr 2025</td>
+                <td class="py-3 text-green-500">Completed</td>
+                <td class="py-3 flex space-x-2">
+                  <a href="#" class="text-indigo-600">View</a>
+                  <a href="#" class="text-red-500">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6">
+          <span class="text-sm text-gray-600">Showing 1-20 of 84 messages</span>
+          <div class="flex space-x-2">
+            <button class="px-3 py-1 border rounded-md hover:bg-gray-100">Previous</button>
+            <button class="px-3 py-1 border rounded-md hover:bg-gray-100">Next</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

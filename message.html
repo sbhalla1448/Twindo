@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Message - Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <div class="max-w-3xl mx-auto bg-white shadow rounded-xl p-8">
+    <h1 class="text-2xl font-bold text-indigo-700 mb-6">📨 Send Message to Contact</h1>
+
+    <form class="space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Message Template</label>
+        <select class="w-full border rounded p-3 text-sm" onchange="insertTemplate(this.value)">
+          <option value="">Select a template</option>
+          <option value="Hi [Name], just a reminder to check your dashboard for the latest updates.">Reminder Message</option>
+          <option value="Hello [Name], we noticed you're eligible for an account upgrade. Let's discuss!">Upgrade Offer</option>
+          <option value="Dear [Name], thank you for being with us. Here’s a summary of your recent activity.">Thank You Note</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Recipient</label>
+        <input type="text" placeholder="Enter contact name or email" class="w-full border rounded p-3 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Channel</label>
+        <select class="w-full border rounded p-3 text-sm">
+          <option>Email</option>
+          <option>SMS</option>
+          <option>WhatsApp</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+        <input type="text" placeholder="Enter message subject" class="w-full border rounded p-3 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+        <textarea id="messageBox" rows="5" class="w-full border rounded p-3 text-sm" placeholder="Write your message here..."></textarea>
+      </div>
+
+      <div class="flex justify-end">
+        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">📤 Send Message</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function insertTemplate(template) {
+      if (template) {
+        document.getElementById('messageBox').value = template;
+      }
+    }
+  </script>
+
+  <div id="successAlert" class="fixed bottom-4 right-4 bg-green-100 text-green-800 px-4 py-2 rounded shadow hidden">
+    ✅ Message sent successfully!
+  </div>
+
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const alert = document.getElementById('successAlert');
+      alert.classList.remove('hidden');
+      setTimeout(() => alert.classList.add('hidden'), 3000);
+    });
+  </script>
+</body>
+</html>

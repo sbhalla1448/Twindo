@@ -1,0 +1,90 @@
+<!-- Twindo Admin Archive (Soft Delete) Documents View -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive Document - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function confirmArchive() {
+      return confirm('Are you sure you want to archive this document? It will be moved to Archived Documents and can be restored later.');
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Manage Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💬 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Manage Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">📄 Manage Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-3xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Documents / Archive</nav>
+          <h2 class="text-3xl font-bold text-yellow-600">Archive Document</h2>
+          <p class="text-gray-600 mt-2">You are about to move the following document to Archive:</p>
+        </section>
+
+        <!-- Document Details Card -->
+        <section class="bg-white rounded-xl shadow p-6 mb-6">
+          <dl class="divide-y divide-gray-200">
+            <div class="py-4 flex justify-between text-sm">
+              <dt class="text-gray-600">Document Name</dt>
+              <dd class="font-medium text-gray-900">Address Proof - Jane Doe.pdf</dd>
+            </div>
+            <div class="py-4 flex justify-between text-sm">
+              <dt class="text-gray-600">Uploaded By</dt>
+              <dd class="font-medium text-gray-900">Jane Doe</dd>
+            </div>
+            <div class="py-4 flex justify-between text-sm">
+              <dt class="text-gray-600">Uploaded On</dt>
+              <dd class="font-medium text-gray-900">15 Apr 2025</dd>
+            </div>
+            <div class="py-4 flex justify-between text-sm">
+              <dt class="text-gray-600">Document Type</dt>
+              <dd class="font-medium text-gray-900">Address Verification</dd>
+            </div>
+          </dl>
+        </section>
+
+        <!-- Archive Action -->
+        <section class="flex justify-end">
+          <form onsubmit="return confirmArchive();">
+            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-xl shadow">📦 Archive Document</button>
+          </form>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

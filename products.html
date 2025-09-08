@@ -1,0 +1,174 @@
+<!-- Twindo Admin — View Products List (Enhanced with Inline Quick Edit for Status/Featured) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleStatus(button) {
+      if (button.innerText === 'Active') {
+        button.innerText = 'Hidden';
+        button.classList.remove('bg-green-100', 'text-green-800');
+        button.classList.add('bg-gray-200', 'text-gray-600');
+      } else {
+        button.innerText = 'Active';
+        button.classList.remove('bg-gray-200', 'text-gray-600');
+        button.classList.add('bg-green-100', 'text-green-800');
+      }
+    }
+
+    function toggleFeatured(button) {
+      if (button.innerText === 'Featured') {
+        button.innerText = '-';
+        button.classList.remove('bg-yellow-100', 'text-yellow-800');
+      } else {
+        button.innerText = 'Featured';
+        button.classList.add('bg-yellow-100', 'text-yellow-800');
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Products</nav>
+          <div class="flex justify-between items-center">
+            <h2 class="text-3xl font-bold text-gray-800">Products</h2>
+            <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl">➕ Add New Product</a>
+          </div>
+        </section>
+
+        <!-- Filters and Search -->
+        <section class="bg-white rounded-xl shadow p-6 mb-6">
+          <div class="flex flex-wrap gap-4 items-center mb-4">
+            <select class="border border-gray-300 rounded-md px-3 py-2">
+              <option>All Statuses</option>
+              <option>Active</option>
+              <option>Hidden</option>
+            </select>
+            <select class="border border-gray-300 rounded-md px-3 py-2">
+              <option>All Categories</option>
+              <option>Credit Services</option>
+              <option>Debt Help</option>
+            </select>
+            <input type="search" placeholder="Search products..." class="border border-gray-300 rounded-md px-3 py-2 flex-1">
+          </div>
+        </section>
+
+        <!-- Products Table with Bulk Actions -->
+        <section class="bg-white rounded-xl shadow p-6">
+          <div class="mb-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+              <select class="border border-gray-300 rounded-md px-3 py-2">
+                <option>Bulk Actions</option>
+                <option>Delete Selected</option>
+                <option>Feature Selected</option>
+                <option>Hide Selected</option>
+              </select>
+              <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md">Apply</button>
+            </div>
+          </div>
+
+          <table class="w-full text-left">
+            <thead>
+              <tr class="text-sm text-gray-400">
+                <th class="py-2 cursor-pointer">🔽</th>
+                <th class="py-2">Image</th>
+                <th class="py-2 cursor-pointer">Title 🔽</th>
+                <th class="py-2 cursor-pointer">Price (per month) 🔽</th>
+                <th class="py-2 cursor-pointer">Category 🔽</th>
+                <th class="py-2 cursor-pointer">Status 🔽</th>
+                <th class="py-2 cursor-pointer">Featured 🔽</th>
+                <th class="py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t">
+                <td class="py-3"><input type="checkbox"></td>
+                <td class="py-3"><img src="https://via.placeholder.com/40" alt="Product" class="rounded"></td>
+                <td class="py-3">Premium Credit Repair</td>
+                <td class="py-3">£49.99 / month</td>
+                <td class="py-3">Credit Services</td>
+                <td class="py-3">
+                  <button onclick="toggleStatus(this)" class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Active</button>
+                </td>
+                <td class="py-3">
+                  <button onclick="toggleFeatured(this)" class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800">Featured</button>
+                </td>
+                <td class="py-3 space-x-2">
+                  <a href="#" class="text-indigo-600">Edit</a>
+                  <a href="#" class="text-red-600">Delete</a>
+                </td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-3"><input type="checkbox"></td>
+                <td class="py-3"><img src="https://via.placeholder.com/40" alt="Product" class="rounded"></td>
+                <td class="py-3">Debt Management Plan</td>
+                <td class="py-3">£29.99 / month</td>
+                <td class="py-3">Debt Help</td>
+                <td class="py-3">
+                  <button onclick="toggleStatus(this)" class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gray-200 text-gray-600">Hidden</button>
+                </td>
+                <td class="py-3">
+                  <button onclick="toggleFeatured(this)" class="inline-flex items-center px-2 py-1 rounded-full text-xs">-</button>
+                </td>
+                <td class="py-3 space-x-2">
+                  <a href="#" class="text-indigo-600">Edit</a>
+                  <a href="#" class="text-red-600">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Pagination -->
+          <div class="flex justify-center items-center space-x-2 mt-6">
+            <button class="px-3 py-1 border rounded-md">Previous</button>
+            <button class="px-3 py-1 border rounded-md bg-indigo-600 text-white">1</button>
+            <button class="px-3 py-1 border rounded-md">2</button>
+            <button class="px-3 py-1 border rounded-md">3</button>
+            <button class="px-3 py-1 border rounded-md">Next</button>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

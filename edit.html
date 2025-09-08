@@ -1,0 +1,196 @@
+<!-- Twindo Admin — Edit Subscription Page (Enhanced with Filters, Bulk Actions, Better UX + Audit Log + Pagination + Plan Summary) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Subscription - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-7xl mx-auto px-6 py-10 space-y-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section>
+          <nav class="text-sm text-gray-500">Home / Admin / Subscriptions / Edit Subscription</nav>
+          <div class="flex justify-between items-center mt-2">
+            <h2 class="text-3xl font-bold text-gray-800">Edit Subscription</h2>
+            <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-100">← Back to Subscription List</button>
+          </div>
+        </section>
+
+        <!-- Edit Subscription Form -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <form class="space-y-6">
+            <div class="flex justify-between items-center">
+              <label class="text-sm font-semibold text-gray-800">User</label>
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">✅ Active</span>
+            </div>
+            <input type="text" value="John Smith" disabled class="mt-1 block w-full border-gray-300 rounded-md shadow-sm bg-gray-100">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Subscription Plan</label>
+                <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                  <option>Essential Plan</option>
+                  <option>Plus Plan</option>
+                  <option selected>Elite Plan</option>
+                </select>
+                <a href="#" class="text-sm text-indigo-600 hover:underline mt-1 inline-block">🧾 View Plan Features</a>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Status</label>
+                <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                  <option selected>Active</option>
+                  <option>Paused</option>
+                  <option>Cancelled</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Start Date</label>
+                <input type="date" value="2025-01-01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Next Billing Date</label>
+                <input type="date" value="2025-05-01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Billing Frequency</label>
+                <input type="text" value="Monthly" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm bg-gray-50" disabled>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700">Last Payment</label>
+                <input type="text" value="£29.99 on 01 Apr 2025" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm bg-gray-50" disabled>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-6">
+              <div class="flex space-x-4">
+                <button type="button" class="px-4 py-2 text-sm bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">⏸ Pause</button>
+                <button type="button" class="px-4 py-2 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200">🛑 Cancel</button>
+              </div>
+              <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700">✅ Save Changes</button>
+            </div>
+          </form>
+        </section>
+  <!-- Email Template Trigger -->
+        <section class="bg-white p-6 rounded-xl shadow">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">📧 Send Email to User</h3>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Select Template</label>
+              <select class="w-full border rounded p-2 text-sm">
+                <option>Choose an email template</option>
+                <option value="approved">✅ Score Approved Notification</option>
+                <option value="rejected">❌ Score Rejected Notification</option>
+                <option value="info">📝 Request for More Info</option>
+              </select>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">CC</label>
+                <input type="email" class="w-full border rounded p-2 text-sm" placeholder="cc@example.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">BCC</label>
+                <input type="email" class="w-full border rounded p-2 text-sm" placeholder="bcc@example.com">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Attachments</label>
+              <input type="file" class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Message Preview</label>
+              <textarea rows="6" class="w-full border rounded p-2 text-sm" placeholder="Message preview...">Hi Jane,
+
+Your latest credit score submission has been approved. Great job!
+
+Regards,
+The Twindo Team</textarea>
+              <p class="mt-1 text-xs text-gray-500 italic">You can preview the final version of this email before sending.</p>
+            </div>
+            <div class="text-right">
+              <button type="button" onclick="toggleTemplateManager()" class="text-sm text-gray-600 hover:underline mr-4">🛠️ Manage Templates</button>
+              <button type="button" class="text-sm text-indigo-600 hover:underline mr-4">👁️ Preview Email</button>
+              <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm">📤 Send Email</button>
+           </div>
+          </form>
+        </section>
+       
+        <!-- Audit Log Section -->
+        <section class="bg-white rounded-xl shadow p-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">📜 Audit Log</h3>
+          <ul class="space-y-4">
+            <li class="text-sm text-gray-600">📅 01 Apr 2025 — Plan upgraded from Plus to Elite</li>
+            <li class="text-sm text-gray-600">⏸️ 15 Mar 2025 — Subscription paused</li>
+            <li class="text-sm text-gray-600">🔄 01 Feb 2025 — Billing cycle changed to Monthly</li>
+            <li class="text-sm text-gray-600">✅ 01 Jan 2025 — Subscription started</li>
+          </ul>
+          <div class="mt-6 flex justify-between items-center text-sm text-gray-500">
+            <div>Showing 1–4 of 20 logs</div>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">Previous</button>
+              <button class="px-3 py-1 bg-indigo-600 text-white rounded">1</button>
+              <button class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">2</button>
+              <button class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">3</button>
+              <button class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300">Next</button>
+            </div>
+          </div>
+        </section>
+
+        <div id="toast" class="fixed bottom-6 right-6 hidden bg-green-100 text-green-800 px-4 py-3 rounded shadow-lg">
+          ✅ Subscription updated successfully!
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    });
+  </script>
+</body>
+</html>

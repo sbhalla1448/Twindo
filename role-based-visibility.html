@@ -1,0 +1,68 @@
+<!-- Admin Settings: Role Visibility | Twindo -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role Visibility | Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="max-w-7xl mx-auto px-6 py-10 space-y-10">
+
+    <!-- Header -->
+    <section class="flex justify-between items-center">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-800">👁️ Role-Based Visibility</h1>
+        <p class="text-sm text-gray-600 mt-1">Define what different roles can see across the Twindo admin platform.</p>
+      </div>
+    </section>
+
+    <!-- Visibility Controls Table -->
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">🔒 Visibility Rules by Role</h2>
+      <table class="w-full text-sm text-left text-gray-700">
+        <thead class="text-xs text-gray-500 border-b">
+          <tr>
+            <th class="py-2 px-4">Admin Section</th>
+            <th class="py-2 px-4">Admin</th>
+            <th class="py-2 px-4">Support Agent</th>
+            <th class="py-2 px-4">Viewer</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr>
+            <td class="py-2 px-4 font-medium">Messages & Actions</td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4 font-medium">Documents</td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4 font-medium">Subscription Management</td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox"></td>
+            <td class="py-2 px-4"><input type="checkbox"></td>
+          </tr>
+          <tr>
+            <td class="py-2 px-4 font-medium">Tools & Resources</td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox" checked></td>
+            <td class="py-2 px-4"><input type="checkbox"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="mt-6 text-right">
+        <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700">💾 Save Visibility Settings</button>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

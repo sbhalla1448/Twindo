@@ -1,0 +1,130 @@
+<!-- Twindo Admin Users Section (Enhanced with Search Filters, Bulk Actions) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Users</nav>
+          <h2 class="text-3xl font-bold text-gray-800">Users</h2>
+        </section>
+
+        <!-- Filters and Search -->
+        <section class="bg-white rounded-xl shadow p-6 mb-6">
+          <div class="flex flex-wrap gap-4 items-center mb-4">
+            <select class="border border-gray-300 rounded-md px-3 py-2">
+              <option>All Statuses</option>
+              <option>Active</option>
+              <option>Suspended</option>
+            </select>
+            <select class="border border-gray-300 rounded-md px-3 py-2">
+              <option>All Subscriptions</option>
+              <option>Essential</option>
+              <option>Plus</option>
+              <option>Elite</option>
+            </select>
+            <input type="search" placeholder="Search users..." class="border border-gray-300 rounded-md px-3 py-2 flex-1">
+          </div>
+        </section>
+
+        <!-- User Table with Bulk Actions -->
+        <section class="bg-white rounded-xl shadow p-6">
+          <div class="mb-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+              <select class="border border-gray-300 rounded-md px-3 py-2">
+                <option>Bulk Actions</option>
+                <option>Suspend Selected</option>
+                <option>Delete Selected</option>
+              </select>
+              <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md">Apply</button>
+            </div>
+          </div>
+
+          <table class="w-full text-left">
+            <thead>
+              <tr class="text-sm text-gray-400">
+                <th class="py-2"><input type="checkbox"></th>
+                <th class="py-2">Name</th>
+                <th class="py-2">Email</th>
+                <th class="py-2">Status</th>
+                <th class="py-2">Subscription</th>
+                <th class="py-2">Joined</th>
+                <th class="py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t">
+                <td class="py-3"><input type="checkbox"></td>
+                <td class="py-3">John Smith</td>
+                <td class="py-3">john@example.com</td>
+                <td class="py-3 text-green-500">Active</td>
+                <td class="py-3">Elite</td>
+                <td class="py-3">12 Jan 2025</td>
+                <td class="py-3"><a href="#" class="text-indigo-600">Manage</a></td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-3"><input type="checkbox"></td>
+                <td class="py-3">Jane Doe</td>
+                <td class="py-3">jane@example.com</td>
+                <td class="py-3 text-yellow-500">Suspended</td>
+                <td class="py-3">Plus</td>
+                <td class="py-3">03 Mar 2025</td>
+                <td class="py-3"><a href="#" class="text-indigo-600">Manage</a></td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-3"><input type="checkbox"></td>
+                <td class="py-3">Mike Taylor</td>
+                <td class="py-3">mike@example.com</td>
+                <td class="py-3 text-green-500">Active</td>
+                <td class="py-3">Essential</td>
+                <td class="py-3">25 Feb 2025</td>
+                <td class="py-3"><a href="#" class="text-indigo-600">Manage</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

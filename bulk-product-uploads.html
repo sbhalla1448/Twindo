@@ -1,0 +1,138 @@
+<!-- Twindo Admin — Bulk Product Upload Page with Import Functionality -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Product Upload - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function showFileName(input) {
+      const label = document.getElementById('file-label');
+      if (input.files.length > 0) {
+        label.textContent = input.files[0].name;
+      } else {
+        label.textContent = 'No file selected';
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-8 text-indigo-700">📦 Bulk Product Upload</h1>
+
+    <!-- Bulk Upload Section -->
+    <section class="bg-white p-6 rounded-xl shadow mb-12">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">📁 Import Products from File</h2>
+      <p class="text-sm text-gray-600 mb-4">Upload a CSV, Excel or compatible file to import multiple product listings into Twindo. All products will be scanned and previewed before confirming import.</p>
+
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Drag and Drop or Choose File</label>
+          <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center text-sm text-gray-500 bg-gray-50 hover:bg-gray-100 cursor-pointer">
+            <input type="file" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="showFileName(this)" class="hidden" id="upload-input">
+            <label for="upload-input" class="cursor-pointer">Drop file here or click to upload</label>
+            <p id="file-label" class="mt-2 italic">No file selected</p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4 mt-4">
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded text-sm">📤 Upload File</button>
+          <button type="button" class="text-sm text-gray-600 hover:underline">📝 Download Template</button>
+          <button type="button" class="text-sm text-gray-600 hover:underline">🔁 Import from Previous</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Preview Table -->
+    <section class="bg-white p-6 rounded-xl shadow mb-12">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">🔍 Live Preview of Imported Products</h2>
+      <p class="text-sm text-gray-600 mb-4">Preview data from your file before importing. Success or error indicators will be shown for each row.</p>
+
+      <table class="min-w-full text-sm">
+        <thead>
+          <tr class="text-left text-gray-600 border-b">
+            <th class="px-3 py-2">Product Title</th>
+            <th class="px-3 py-2">Category</th>
+            <th class="px-3 py-2">Price (Monthly)</th>
+            <th class="px-3 py-2">Status</th>
+            <th class="px-3 py-2">Tags</th>
+            <th class="px-3 py-2">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-3 py-2">Example Product A</td>
+            <td class="px-3 py-2">Credit Services</td>
+            <td class="px-3 py-2">£15</td>
+            <td class="px-3 py-2">Draft</td>
+            <td class="px-3 py-2">Popular, Top Rated</td>
+            <td class="px-3 py-2 text-green-600">✅ Success</td>
+          </tr>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="px-3 py-2">Example Product B</td>
+            <td class="px-3 py-2">Debt Help</td>
+            <td class="px-3 py-2">£10</td>
+            <td class="px-3 py-2">Published</td>
+            <td class="px-3 py-2">Trusted Choice</td>
+            <td class="px-3 py-2 text-red-500">❌ Failed: Missing Description</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Existing Bulk Management Section -->
+    <div class="mt-12">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">🧹 Bulk Product Management</h2>
+      <div class="bg-white p-4 rounded-xl shadow space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center md:space-x-4 space-y-3 md:space-y-0">
+          <select class="border rounded p-2 text-sm">
+            <option>Bulk Action</option>
+            <option value="publish">✅ Publish</option>
+            <option value="draft">📝 Save as Draft</option>
+            <option value="delete">🗑️ Delete</option>
+            <option value="duplicate">🔁 Duplicate</option>
+          </select>
+          <select class="border rounded p-2 text-sm">
+            <option>Filter by Category</option>
+            <option>Credit Services</option>
+            <option>Debt Help</option>
+            <option>Financial Tools</option>
+          </select>
+          <select class="border rounded p-2 text-sm">
+            <option>Sort by</option>
+            <option>Price (Low to High)</option>
+            <option>Price (High to Low)</option>
+            <option>Newest</option>
+            <option>Oldest</option>
+          </select>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded text-sm">Apply</button>
+        </div>
+        <table class="min-w-full text-sm mt-4">
+          <thead>
+            <tr class="text-left text-gray-600 border-b">
+              <th class="px-3 py-2"><input type="checkbox"></th>
+              <th class="px-3 py-2">Product</th>
+              <th class="px-3 py-2">Status</th>
+              <th class="px-3 py-2">Category</th>
+              <th class="px-3 py-2">Price</th>
+              <th class="px-3 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="px-3 py-2"><input type="checkbox"></td>
+              <td class="px-3 py-2">Example Product</td>
+              <td class="px-3 py-2">Draft</td>
+              <td class="px-3 py-2">Credit Services</td>
+              <td class="px-3 py-2">£12 / mo</td>
+              <td class="px-3 py-2 text-indigo-600 hover:underline cursor-pointer">Edit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

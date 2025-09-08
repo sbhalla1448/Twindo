@@ -1,0 +1,316 @@
+<!-- Twindo Admin Dashboard (Enhanced Frontend UI/UX Match with Quick Actions, System Alerts, and Mini Charts) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-7xl mx-auto px-6 py-10">
+
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Dashboard</nav>
+          <h2 class="text-3xl font-bold text-gray-800">Dashboard</h2>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <a href="#" class="bg-indigo-100 text-indigo-700 rounded-xl p-4 flex items-center space-x-3 hover:bg-indigo-200">
+            <span>➕ Add New User</span>
+          </a>
+          <a href="#" class="bg-green-100 text-green-700 rounded-xl p-4 flex items-center space-x-3 hover:bg-green-200">
+            <span>➕ Add New Product</span>
+          </a>
+          <a href="#" class="bg-yellow-100 text-yellow-700 rounded-xl p-4 flex items-center space-x-3 hover:bg-yellow-200">
+            <span>📩 Compose Message</span>
+          </a>
+          <a href="#" class="bg-gray-100 text-gray-700 rounded-xl p-4 flex items-center space-x-3 hover:bg-gray-200">
+            <span>⚙️ Go to Settings</span>
+          </a>
+        </section>
+
+        <!-- Metrics Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Total Users</div>
+            <div class="text-2xl font-semibold text-gray-800">1,200</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Active Subscriptions</div>
+            <div class="text-2xl font-semibold text-gray-800">950</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Monthly Revenue</div>
+            <div class="text-2xl font-semibold text-gray-800">£25,000</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Pending Messages</div>
+            <div class="text-2xl font-semibold text-gray-800">32</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Documents Uploaded</div>
+            <div class="text-2xl font-semibold text-gray-800">520</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Products Available</div>
+            <div class="text-2xl font-semibold text-gray-800">15</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">Tools & Resources</div>
+            <div class="text-2xl font-semibold text-gray-800">7</div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <div class="text-sm text-gray-400">System Alerts</div>
+            <div class="text-2xl font-semibold text-gray-800">2</div>
+          </div>
+        </section>
+
+        <!-- Mini Charts -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-white rounded-xl shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">New Users (7 days)</h3>
+            <canvas id="usersChart"></canvas>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Revenue Growth (7 days)</h3>
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </section>
+
+        <!-- Search & Filter Users -->
+<section class="bg-white rounded-xl shadow p-6 mb-8">
+  <h3 class="text-xl font-semibold text-gray-800 mb-4">Search & Filter Users</h3>
+  <form class="grid md:grid-cols-4 gap-4">
+    <input type="text" placeholder="Search by name or email" class="border rounded-lg p-2 text-sm">
+    <select class="border rounded-lg p-2 text-sm">
+      <option>Status</option>
+      <option>Active</option>
+      <option>Inactive</option>
+    </select>
+    <select class="border rounded-lg p-2 text-sm">
+      <option>Plan</option>
+      <option>Essential</option>
+      <option>Plus</option>
+      <option>Elite</option>
+    </select>
+    <button type="submit" class="bg-gray-100 text-gray-800 px-4 py-2 rounded text-sm hover:bg-gray-200">Search / Apply Filters</button>
+  </form>
+</section>
+<section class="bg-white rounded-xl shadow p-6 mb-8">
+  <h3 class="text-xl font-semibold text-gray-800 mb-4">Last 6 Activities</h3>
+  <table class="w-full text-left">
+    <thead>
+      <tr class="text-sm text-gray-400">
+        <th class="py-2">Name</th>
+        <th class="py-2">Email</th>
+        <th class="py-2">Plan</th>
+        <th class="py-2">Status</th>
+        <th class="py-2">Score</th>
+        <th class="py-2">Last Login</th>
+        <th class="py-2 text-right">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-t">
+        <td class="py-3">Alice Morgan</td>
+        <td class="py-3">alice@example.com</td>
+        <td class="py-3">Elite</td>
+        <td class="py-3 text-green-600">Active</td>
+        <td class="py-3">912</td>
+        <td class="py-3">19 Apr 2025</td>
+        <td class="py-3 text-right space-x-2">
+          <a href="#" class="text-indigo-600 hover:underline">View</a>
+          <a href="#" class="text-blue-600 hover:underline">Message</a>
+          <a href="#" class="text-red-600 hover:underline">Deactivate</a>
+        </td>
+      </tr>
+      <tr class="border-t">
+        <td class="py-3">Benjamin Lee</td>
+        <td class="py-3">ben@example.com</td>
+        <td class="py-3">Plus</td>
+        <td class="py-3 text-yellow-600">Inactive</td>
+        <td class="py-3">742</td>
+        <td class="py-3">18 Apr 2025</td>
+        <td class="py-3 text-right space-x-2">
+          <a href="#" class="text-indigo-600 hover:underline">View</a>
+          <a href="#" class="text-blue-600 hover:underline">Message</a>
+          <a href="#" class="text-red-600 hover:underline">Deactivate</a>
+        </td>
+      </tr>
+      <tr class="border-t">
+        <td class="py-3">Chloe Adams</td>
+        <td class="py-3">chloe@example.com</td>
+        <td class="py-3">Essential</td>
+        <td class="py-3 text-green-600">Active</td>
+        <td class="py-3">810</td>
+        <td class="py-3">17 Apr 2025</td>
+        <td class="py-3 text-right space-x-2">
+          <a href="#" class="text-indigo-600 hover:underline">View</a>
+          <a href="#" class="text-blue-600 hover:underline">Message</a>
+          <a href="#" class="text-red-600 hover:underline">Deactivate</a>
+        </td>
+      </tr>
+      <tr class="border-t">
+        <td class="py-3">Daniel Reed</td>
+        <td class="py-3">daniel@example.com</td>
+        <td class="py-3">Plus</td>
+        <td class="py-3 text-green-600">Active</td>
+        <td class="py-3">678</td>
+        <td class="py-3">16 Apr 2025</td>
+        <td class="py-3 text-right space-x-2">
+          <a href="#" class="text-indigo-600 hover:underline">View</a>
+          <a href="#" class="text-blue-600 hover:underline">Message</a>
+          <a href="#" class="text-red-600 hover:underline">Deactivate</a>
+        </td>
+      </tr>
+      <tr class="border-t">
+        <td class="py-3">Ella Knight</td>
+        <td class="py-3">ella@example.com</td>
+        <td class="py-3">Elite</td>
+        <td class="py-3 text-yellow-600">Inactive</td>
+        <td class="py-3">704</td>
+        <td class="py-3">15 Apr 2025</td>
+        <td class="py-3 text-right space-x-2">
+          <a href="#" class="text-indigo-600 hover:underline">View</a>
+          <a href="#" class="text-blue-600 hover:underline">Message</a>
+          <a href="#" class="text-red-600 hover:underline">Deactivate</a>
+        </td>
+      </tr>
+      <tr class="border-t">
+        <td class="py-3">Felix Grant</td>
+        <td class="py-3">felix@example.com</td>
+        <td class="py-3">Essential</td>
+        <td class="py-3 text-green-600">Active</td>
+        <td class="py-3">789</td>
+        <td class="py-3">14 Apr 2025</td>
+        <td class="py-3 text-right space-x-2">
+          <a href="#" class="text-indigo-600 hover:underline">View</a>
+          <a href="#" class="text-blue-600 hover:underline">Message</a>
+          <a href="#" class="text-red-600 hover:underline">Deactivate</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="flex justify-between items-center mt-4">
+    <button class="text-sm px-4 py-2 bg-gray-100 rounded hover:bg-gray-200">⬅ Previous</button>
+    <button class="text-sm px-4 py-2 bg-gray-100 rounded hover:bg-gray-200">Next ➡</button>
+  </div>
+</section>
+
+<!-- CRM Quick Panels -->
+<section class="grid md:grid-cols-3 gap-6 mb-8">
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">📬 Recent Messages</h3>
+    <ul class="text-sm text-gray-700 space-y-2">
+      <li><a href="#" class="hover:underline">John: Requesting plan upgrade</a></li>
+      <li><a href="#" class="hover:underline">Sarah: Asked about credit score trend</a></li>
+      <li><a href="#" class="hover:underline">Ahmed: Dispute resolved ✅</a></li>
+    </ul>
+  </div>
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">📅 Recent Activity</h3>
+    <ul class="text-sm text-gray-700 space-y-2">
+      <li>Anna subscribed to Elite Plan</li>
+      <li>James uploaded new credit report</li>
+      <li>Account locked: Michael (Suspicious login)</li>
+      <li>Rachel changed password</li>
+      <li>William added new address</li>
+      <li>Karen updated payment method</li>
+    </ul>
+    <div class="flex justify-between items-center mt-4">
+      <button class="text-sm px-3 py-1 bg-gray-100 rounded hover:bg-gray-200">⬅ Previous</button>
+      <button class="text-sm px-3 py-1 bg-gray-100 rounded hover:bg-gray-200">Next ➡</button>
+    </div>
+  </div>
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">🧩 Quick Actions</h3>
+    <div class="space-y-2">
+      <button class="w-full bg-indigo-100 text-indigo-800 py-2 rounded text-sm hover:bg-indigo-200">📤 Send Email Blast</button>
+      <button class="w-full bg-green-100 text-green-800 py-2 rounded text-sm hover:bg-green-200">➕ Add New User</button>
+      <button class="w-full bg-yellow-100 text-yellow-800 py-2 rounded text-sm hover:bg-yellow-200">⚠️ Flagged Accounts</button>
+    </div>
+  </div>
+</section>
+        <section class="bg-white rounded-xl shadow p-6 mb-8">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">System Alerts</h3>
+          <ul class="space-y-2">
+            <li class="text-yellow-600">⚠️ Payment Gateway Delay reported - 10 minutes ago</li>
+            <li class="text-red-600">🚨 User Login Failure Spike detected</li>
+            <li class="text-green-600">✅ Backup Completed Successfully - 1 hour ago</li>
+          </ul>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+<script>
+const usersCtx = document.getElementById('usersChart').getContext('2d');
+const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+
+new Chart(usersCtx, {
+  type: 'line',
+  data: {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [{
+      label: 'New Users',
+      data: [12, 19, 8, 15, 22, 30, 25],
+      backgroundColor: 'rgba(79, 70, 229, 0.2)',
+      borderColor: 'rgba(79, 70, 229, 1)',
+      borderWidth: 2
+    }]
+  }
+});
+
+new Chart(revenueCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [{
+      label: 'Revenue (£)',
+      data: [2500, 3000, 2200, 2800, 3500, 4000, 4200],
+      backgroundColor: 'rgba(16, 185, 129, 0.7)',
+      borderColor: 'rgba(5, 150, 105, 1)',
+      borderWidth: 1
+    }]
+  }
+});
+</script>
+
+</body>
+</html>

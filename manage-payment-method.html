@@ -1,0 +1,103 @@
+<!-- Twindo Admin — Edit Payment Method UI (Updated Version) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Payment Method - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+
+  <div class="flex pt-20">
+
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-4xl mx-auto px-6 py-10 space-y-8">
+
+        <!-- Page Header -->
+        <section>
+          <nav class="text-sm text-gray-500 mb-2">Home / Admin / Payment Methods / Edit Payment Method</nav>
+          <h2 class="text-3xl font-bold text-gray-800">✏️ Edit Payment Method</h2>
+        </section>
+
+        <!-- Edit Form -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Cardholder Name</label>
+                <input type="text" value="John Smith" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                <input type="text" value="**** **** **** 4242" disabled class="w-full bg-gray-100 border border-gray-300 rounded-lg p-2 text-sm text-gray-600">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Expiration Date</label>
+                <input type="text" value="04/27" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">CVC Code</label>
+                <input type="password" placeholder="•••" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Billing Address</label>
+              <textarea class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm" rows="3">123 High Street, London, UK</textarea>
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+              <label class="inline-flex items-center text-sm">
+                <input type="checkbox" class="form-checkbox text-indigo-600 mr-2" checked>
+                Set as default payment method
+              </label>
+              <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg text-sm hover:bg-indigo-700">💾 Save Changes</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Additional Actions -->
+        <section class="bg-white rounded-xl shadow p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">🧾 Additional Actions</h3>
+          <div class="flex flex-wrap gap-4">
+            <button class="bg-red-100 text-red-700 px-4 py-2 rounded-md text-sm hover:bg-red-200">🗑️ Delete Method</button>
+            <button class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-md text-sm hover:bg-yellow-200">📥 Archive Method</button>
+            <button class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-md text-sm hover:bg-indigo-200">📜 View Activity History</button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!-- Twindo Admin — Manage Single User View (Enhanced with Cancel, Reactivate, Delete, Edit) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage User - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function populatePreview() {
+      const template = document.getElementById('templateSelect').value;
+      const preview = document.querySelector('textarea');
+      if (template === 'approved') {
+        preview.value = 'Hi Jane,\n\nYour latest credit score submission has been approved. Great job!\n\nRegards,\nThe Twindo Team';
+      } else if (template === 'rejected') {
+        preview.value = 'Hi Jane,\n\nUnfortunately, your uploaded score has been rejected. Please try again with a clearer screenshot.\n\nRegards,\nThe Twindo Team';
+      } else if (template === 'info') {
+        preview.value = 'Hi Jane,\n\nWe need a bit more information regarding your recent upload. Please provide the missing document(s) as soon as you can.\n\nThanks,\nThe Twindo Team';
+      } else {
+        preview.value = '';
+      }
+    }
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.textContent = message;
+      toast.className = 'fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50 animate-bounce';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+    function toggleTemplateManager() {
+      alert('Template Manager modal would open here.');
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Top Navigation -->
+  <header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+      <span class="text-gray-600">Admin User</span>
+    </div>
+  </header>
+  <div class="flex pt-20">
+    <!-- Sidebar -->
+    <aside class="w-56 bg-white shadow-sm min-h-screen">
+      <nav class="mt-8 px-4 space-y-2">
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+        <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">👤 Users</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Payment Methods</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛍️ Products</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+        <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📋 System Logs</a>
+      </nav>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto">
+      <div class="max-w-4xl mx-auto px-6 py-10">
+        <!-- Breadcrumb & Hero -->
+        <section class="mb-8">
+          <nav class="text-sm text-gray-500">Home / Admin / Users / Manage User</nav>
+          <h2 class="text-3xl font-bold text-gray-800">Manage User: John Smith</h2>
+        </section>
+         <!-- Manage Profile -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">👤 Manage Profile</h2>
+            <span class="inline-block text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">✅ Active</span>
+          </div>
+          <p class="text-sm text-gray-600 mb-6">Update your personal information to keep your account secure and up to date.</p>
+
+          <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500" value="John Doe">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+              <input type="email" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500" value="john@example.com">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm" placeholder="+44 123 456 7890">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Profile Picture</label>
+              <input type="file" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+            </div>
+          </form>
+
+          <div class="mt-6 text-right">
+            <button class="bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 text-sm shadow focus:outline-none focus:ring-2 focus:ring-indigo-500">💾 Save Changes</button>
+          </div>
+        </section>
+                <!-- Spacer -->
+        <section class="mt-8"></section>
+             <!-- Security Settings -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">🔐 Security Settings</h2>
+          <p class="text-sm text-gray-600 mb-6">Manage your password, two-factor authentication (2FA), and other security features.</p>
+
+          <div class="space-y-6">
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-800">Password</h3>
+                <p class="text-sm text-gray-600">You last changed your password 4 months ago.</p>
+              </div>
+              <button class="text-sm text-indigo-600 hover:underline">Change Password</button>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div>
+                <h3 class="text-sm font-semibold text-gray-800">Two-Factor Authentication (2FA)</h3>
+                <p class="text-sm text-gray-600">Secure your account by enabling 2FA login.</p>
+              </div>
+              <button class="text-sm bg-indigo-600 text-white px-4 py-1 rounded hover:bg-indigo-700">Enable 2FA</button>
+            </div>
+
+            <div class="border-t pt-6">
+              <h3 class="text-sm font-semibold text-gray-800 mb-2">Delete Account</h3>
+              <p class="text-sm text-red-600">This will permanently delete your Twindo account and cannot be undone.</p>
+              <button class="mt-2 text-sm text-red-600 hover:underline">Request Account Deletion</button>
+            </div>
+          </div>
+        </section>
+                <!-- Spacer -->
+        <section class="mt-8"></section>
+
+        <!-- Address Management -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">🏡 Address Management</h2>
+          <p class="text-sm text-gray-600 mb-6">Update or add your current address information for accurate credit reporting and verification.</p>
+
+          <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Street Address</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm" placeholder="Flat 1, 20 High Street">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm" placeholder="London">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Postcode</label>
+              <input type="text" class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm" placeholder="SW1A 1AA">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+              <select class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+                <option>United Kingdom</option>
+                <option>Ireland</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Address Type</label>
+              <select class="w-full border border-gray-300 rounded-lg p-2 text-sm shadow-sm">
+                <option>Billing Address</option>
+                <option>Residential Address</option>
+                <option>Both</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="mt-6 flex justify-between items-center">
+            <label class="inline-flex items-center text-sm text-gray-700">
+              <input type="checkbox" class="form-checkbox text-indigo-600 mr-2"> Set as Default Address
+            </label>
+            <button class="bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 text-sm shadow focus:outline-none focus:ring-2 focus:ring-indigo-500">💾 Save Address</button>
+          </div>
+        </section>
+                <!-- Spacer -->
+        <section class="mt-8"></section>
+
+        <!-- Saved Addresses Section -->
+        <section class="bg-white rounded-xl shadow p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">📦 Saved Addresses</h2>
+          <p class="text-sm text-gray-600 mb-6">Below are your previously saved addresses. You can edit or remove them at any time.</p>
+
+          <div class="space-y-4">
+            <div class="border rounded-lg p-4 shadow-sm">
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="font-semibold text-gray-800">Flat 1, 20 High Street</p>
+                  <p class="text-sm text-gray-600">London, SW1A 1AA · United Kingdom</p>
+                  <span class="inline-block mt-1 text-xs text-green-600 font-medium">✅ Verified</span>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-sm text-indigo-600 hover:underline">Edit</button>
+                  <button class="text-sm text-red-600 hover:underline">Delete</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="border rounded-lg p-4 shadow-sm">
+              <div class="flex justify-between items-start">
+                <div>
+                  <p class="font-semibold text-gray-800">Apartment 3B, Elm Court</p>
+                  <p class="text-sm text-gray-600">Manchester, M1 2AB · United Kingdom</p>
+                  <span class="inline-block mt-1 text-xs text-gray-500">❌ Unverified</span>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-sm text-indigo-600 hover:underline">Edit</button>
+                  <button class="text-sm text-red-600 hover:underline">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+                <!-- Spacer -->
+        <section class="mt-8"></section>
+        
+        <!-- Email Template Trigger -->
+        <section class="bg-white p-6 rounded-xl shadow">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">📧 Send Email to User</h3>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Select Template</label>
+              <select id="templateSelect" onchange="populatePreview()" class="w-full border rounded p-2 text-sm">
+                <option>Choose an email template</option>
+                <option value="approved">✅ Score Approved Notification</option>
+                <option value="rejected">❌ Score Rejected Notification</option>
+                <option value="info">📝 Request for More Info</option>
+              </select>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">CC</label>
+                <input type="email" class="w-full border rounded p-2 text-sm" placeholder="cc@example.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">BCC</label>
+                <input type="email" class="w-full border rounded p-2 text-sm" placeholder="bcc@example.com">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Attachments</label>
+              <input type="file" class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Message Preview</label>
+              <textarea rows="6" class="w-full border rounded p-2 text-sm" placeholder="Message preview...">Hi Jane,
+
+Your latest credit score submission has been approved. Great job!
+
+Regards,
+The Twindo Team</textarea>
+              <p class="mt-1 text-xs text-gray-500 italic">You can preview the final version of this email before sending.</p>
+            </div>
+            <div class="text-right">
+              <button type="button" onclick="toggleTemplateManager()" class="text-sm text-gray-600 hover:underline mr-4">🛠️ Manage Templates</button>
+              <button type="button" class="text-sm text-indigo-600 hover:underline mr-4">👁️ Preview Email</button>
+              <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm">📤 Send Email</button>
+            </div>
+          </form>
+        </section>
+        <!-- Spacer -->
+        <section class="mt-8"></section>
+        <!-- Account Manager Card -->
+        <section class="mt-8 bg-white rounded-xl shadow p-6 mb-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">👥 Account Manager</h3>
+          <p class="text-sm text-gray-600 mb-2">Assigned Admin: <strong>Sarah Patel</strong></p>
+          <button class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded text-sm hover:bg-indigo-200">Change Manager</button>
+        </section>
+        <!-- Security Actions Card -->
+        <section class="bg-white rounded-xl shadow p-6 mb-10">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">🔐 Security Actions</h3>
+          <p class="text-sm text-gray-600 mb-6">Manage sensitive account-level operations with care. Use the options below to update security status for this user.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+              <h4 class="text-sm font-medium text-gray-800 mb-2">🔄 Reset Password</h4>
+              <p class="text-xs text-gray-600 mb-3">Force the user to reset their login credentials.</p>
+              <button class="bg-red-100 text-red-700 px-3 py-1 rounded text-sm hover:bg-red-200 w-full" onclick="confirmAction('Reset Password')">Reset</button>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+              <h4 class="text-sm font-medium text-gray-800 mb-2">⏸️ Suspend Account</h4>
+              <p class="text-xs text-gray-600 mb-3">Temporarily deactivate this user's access.</p>
+              <button class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded text-sm hover:bg-yellow-200 w-full" onclick="confirmAction('Suspend Account')">Suspend</button>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+              <h4 class="text-sm font-medium text-gray-800 mb-2">✅ Reactivate Account</h4>
+              <p class="text-xs text-gray-600 mb-3">Re-enable login for a previously suspended user.</p>
+              <button class="bg-green-100 text-green-700 px-3 py-1 rounded text-sm hover:bg-green-200 w-full" onclick="confirmAction('Reactivate Account')">Reactivate</button>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+              <h4 class="text-sm font-medium text-gray-800 mb-2">🗑️ Delete User</h4>
+              <p class="text-xs text-gray-600 mb-3">Permanently remove this user and their data.</p>
+              <button class="bg-gray-200 text-gray-800 px-3 py-1 rounded text-sm hover:bg-gray-300 w-full" onclick="confirmAction('Delete User')">Delete</button>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+              <h4 class="text-sm font-medium text-gray-800 mb-2">🔍 View Login History</h4>
+              <p class="text-xs text-gray-600 mb-3">Review the last 3 logins from devices, IPs, and timestamps.</p>
+              <button class="bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm hover:bg-blue-200 w-full" onclick="confirmAction('View Login History')">View</button>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm">
+              <h4 class="text-sm font-medium text-gray-800 mb-2">🔐 Temporarily Lock Account</h4>
+              <p class="text-xs text-gray-600 mb-3">Prevent access until manually reactivated or unlocked.</p>
+              <button class="bg-purple-100 text-purple-700 px-3 py-1 rounded text-sm hover:bg-purple-200 w-full" onclick="confirmAction('Temporarily Lock Account')">Lock</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+<!-- Confirmation Modal -->
+<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-xl p-6 w-96">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4" id="modalTitle">Confirm Action</h3>
+    <p class="text-sm text-gray-600 mb-6" id="modalMessage">Are you sure you want to proceed with this action?</p>
+    <div class="flex justify-end gap-4">
+      <button onclick="closeModal()" class="px-4 py-2 text-sm rounded bg-gray-100 hover:bg-gray-200">Cancel</button>
+      <button onclick="executeAction()" class="px-4 py-2 text-sm rounded bg-red-600 text-white hover:bg-red-700">Confirm</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

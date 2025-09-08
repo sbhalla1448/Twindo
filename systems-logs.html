@@ -1,0 +1,147 @@
+<!-- Twindo Admin System Logs (Enhanced with Pagination + Critical Highlighting) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Logs - Twindo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function openLogDetails(user, action, ip, timestamp) {
+      document.getElementById('logUser').innerText = user;
+      document.getElementById('logAction').innerText = action;
+      document.getElementById('logIP').innerText = ip;
+      document.getElementById('logTime').innerText = timestamp;
+      document.getElementById('logModal').classList.remove('hidden');
+    }
+
+    function closeLogModal() {
+      document.getElementById('logModal').classList.add('hidden');
+    }
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen relative">
+
+<!-- View Log Modal -->
+<div id="logModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl p-8 shadow-lg max-w-md w-full">
+    <h2 class="text-2xl font-bold mb-4">Log Details</h2>
+    <p><strong>User:</strong> <span id="logUser"></span></p>
+    <p><strong>Action:</strong> <span id="logAction"></span></p>
+    <p><strong>IP Address:</strong> <span id="logIP"></span></p>
+    <p><strong>Timestamp:</strong> <span id="logTime"></span></p>
+    <div class="text-right mt-6">
+      <button onclick="closeLogModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Top Navigation -->
+<header class="bg-white shadow fixed top-0 inset-x-0 z-10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-indigo-700">Twindo Admin</h1>
+    <span class="text-gray-600">Admin User</span>
+  </div>
+</header>
+
+<div class="flex pt-20">
+
+  <!-- Sidebar -->
+  <aside class="w-56 bg-white shadow-sm min-h-screen">
+    <nav class="mt-8 px-4 space-y-2">
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🏠 Dashboard</a>
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">👤 Users</a>
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">💳 Subscriptions</a>
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">⚙️ Settings</a>
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📄 Documents</a>
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">📩 Messages & Actions</a>
+      <a href="#" class="block py-2 px-3 rounded-md hover:bg-gray-100">🛠️ Tools & Resources</a>
+      <a href="#" class="block py-2 px-3 rounded-md bg-indigo-600 text-white">📋 System Logs</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-auto">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+
+      <!-- Breadcrumb & Hero -->
+      <section class="mb-8">
+        <nav class="text-sm text-gray-500">Home / Admin / System Logs</nav>
+        <h2 class="text-3xl font-bold text-gray-800">System Logs</h2>
+      </section>
+
+      <!-- Filters -->
+      <section class="flex flex-col md:flex-row md:space-x-4 mb-6">
+        <input type="text" placeholder="🔎 Search by user or action" class="border px-4 py-2 rounded-lg w-full md:w-1/3 mb-4 md:mb-0">
+        <input type="date" class="border px-4 py-2 rounded-lg w-full md:w-1/6 mb-4 md:mb-0">
+        <input type="date" class="border px-4 py-2 rounded-lg w-full md:w-1/6 mb-4 md:mb-0">
+        <select class="border px-4 py-2 rounded-lg w-full md:w-1/4">
+          <option value="all">All Actions</option>
+          <option value="edit">✏️ Edit</option>
+          <option value="upload">⬆️ Upload</option>
+          <option value="delete">🗑️ Delete</option>
+          <option value="login">🔐 Login</option>
+        </select>
+      </section>
+
+      <!-- System Logs Table -->
+      <section class="bg-white rounded-xl shadow p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold text-gray-800">Recent Activity</h3>
+        </div>
+        <table class="w-full text-left">
+          <thead>
+            <tr class="text-sm text-gray-400">
+              <th class="py-2">User</th>
+              <th class="py-2">Action</th>
+              <th class="py-2">IP Address</th>
+              <th class="py-2">Timestamp</th>
+              <th class="py-2 text-right">View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t hover:bg-gray-50">
+              <td class="py-3">Admin</td>
+              <td class="py-3">✏️ Updated Subscription Settings</td>
+              <td class="py-3">192.168.1.10</td>
+              <td class="py-3">2025-04-13 10:15 AM</td>
+              <td class="py-3 text-right">
+                <button onclick="openLogDetails('Admin','Updated Subscription Settings','192.168.1.10','2025-04-13 10:15 AM')" class="text-indigo-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-t hover:bg-gray-50">
+              <td class="py-3">John Smith</td>
+              <td class="py-3">⬆️ Uploaded New Document</td>
+              <td class="py-3">172.16.5.2</td>
+              <td class="py-3">2025-04-12 04:45 PM</td>
+              <td class="py-3 text-right">
+                <button onclick="openLogDetails('John Smith','Uploaded New Document','172.16.5.2','2025-04-12 04:45 PM')" class="text-indigo-600 hover:underline">View</button>
+              </td>
+            </tr>
+            <tr class="border-t hover:bg-gray-50 bg-red-50">
+              <td class="py-3">Jane Doe</td>
+              <td class="py-3">🗑️ Deleted User</td>
+              <td class="py-3">10.10.10.5</td>
+              <td class="py-3">2025-04-11 09:30 AM</td>
+              <td class="py-3 text-right">
+                <button onclick="openLogDetails('Jane Doe','Deleted User','10.10.10.5','2025-04-11 09:30 AM')" class="text-indigo-600 hover:underline">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6">
+          <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">Previous</button>
+          <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg">Next</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>
